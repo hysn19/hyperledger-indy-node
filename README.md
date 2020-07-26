@@ -1,1 +1,1 @@
-# hyperledger-indy-nodeo
+# hyperledger-indy-node
