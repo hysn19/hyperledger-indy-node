@@ -1,11 +1,10 @@
 # hyperledger-indy-node
 
-
 ## exec command
 
 ```sh
 # Docker Image Build
-docker build --tag hyperledger-indy-node:0.1 . 
+docker build --tag hyperledger-indy-node:0.1 .
 
 # Docker Container Run
 docker run -p 9701-9708:9701-9708 --name indy-node -d hyperledger-indy-node:0.1
@@ -23,11 +22,10 @@ tail -f /var/log/indy/sandbox/Node3.log
 tail -f /var/log/indy/sandbox/Node4.log
 ```
 
+## Node config
 
-## /etc/indy/indy_config.py
- 
- ```bash
- # Current network
+ ```sh
+ # Current network(vim /etc/indy/indy_config.py)
 
 # Disable stdout logging
 enableStdOutLogging = False
@@ -55,11 +53,10 @@ NODE_INFO_DIR = '/var/lib/indy'
 NETWORK_NAME = 'sandbox'
 ```
 
-
-
 ## sucess
 
 ### Node1
+
 ```sh
 2020-07-28 06:10:42,068|INFO|ordering_service.py|Node1:0 set last ordered as (0, 8)
 2020-07-28 06:10:42,071|INFO|ordering_service.py|Node1:0 ordered batch request, view no 0, ppSeqNo 8, ledger 0, state root 9Y7F5NkZKyYCSMDRgm5wuULrM2ZwbBZ66r5NPJQokpLi, txn root 2koSg1fFQWTW9UBbN34xwEN4WJ8ZRKxXget2xRiSGmQy, audit root 3zR1RBBEE1LsaBFkK12HuSCkfSZRqPgdNYeKdXewHE2C, requests ordered 0, discarded 0
@@ -72,6 +69,7 @@ NETWORK_NAME = 'sandbox'
 ```
 
 ### Node2
+
 ```sh
 2020-07-28 06:10:42,076|INFO|ordering_service.py|Node2:0 set last ordered as (0, 8)
 2020-07-28 06:10:42,081|INFO|ordering_service.py|Node2:0 ordered batch request, view no 0, ppSeqNo 8, ledger 0, state root 9Y7F5NkZKyYCSMDRgm5wuULrM2ZwbBZ66r5NPJQokpLi, txn root 2koSg1fFQWTW9UBbN34xwEN4WJ8ZRKxXget2xRiSGmQy, audit root 3zR1RBBEE1LsaBFkK12HuSCkfSZRqPgdNYeKdXewHE2C, requests ordered 0, discarded 0
@@ -84,6 +82,7 @@ NETWORK_NAME = 'sandbox'
 ```
 
 ### Node3
+
 ```sh
 2020-07-28 06:10:42,092|INFO|ordering_service.py|Node3:0 set last ordered as (0, 8)
 2020-07-28 06:10:42,094|INFO|ordering_service.py|Node3:0 ordered batch request, view no 0, ppSeqNo 8, ledger 0, state root 9Y7F5NkZKyYCSMDRgm5wuULrM2ZwbBZ66r5NPJQokpLi, txn root 2koSg1fFQWTW9UBbN34xwEN4WJ8ZRKxXget2xRiSGmQy, audit root 3zR1RBBEE1LsaBFkK12HuSCkfSZRqPgdNYeKdXewHE2C, requests ordered 0, discarded 0
@@ -96,6 +95,7 @@ NETWORK_NAME = 'sandbox'
 ```
 
 ### Node4
+
 ```sh
 2020-07-28 06:10:42,090|INFO|ordering_service.py|Node4:0 set last ordered as (0, 8)
 2020-07-28 06:10:42,093|INFO|ordering_service.py|Node4:0 ordered batch request, view no 0, ppSeqNo 8, ledger 0, state root 9Y7F5NkZKyYCSMDRgm5wuULrM2ZwbBZ66r5NPJQokpLi, txn root 2koSg1fFQWTW9UBbN34xwEN4WJ8ZRKxXget2xRiSGmQy, audit root 3zR1RBBEE1LsaBFkK12HuSCkfSZRqPgdNYeKdXewHE2C, requests ordered 0, discarded 0
@@ -109,19 +109,18 @@ NETWORK_NAME = 'sandbox'
 
 ## failure
 
-### Node1
 ```sh
 2020-07-28 06:07:19,428|INFO|message_processor.py|Node1 discarding message ({'protocolVersion': 2, 'reqId': 1595916439387017332, 'operation': {'type': '1', 'dest': 'VVKag1sBnv7B7aYVEUZbEp', 'verkey': 'GXa725cSiPBCz3E9utm47TKNyQJu8VV4TA4CthQiCTeY', 'role': '101'}, 'identifier': '9VgkwQpKYrtsifJ3EN8toy', 'signature': '3nArUW4sNQHJZwZvCEi9jLhXAFKHyDmcPGMuce7uJhshmfNL6McsyAXVm1hX782AEFAPkjXwQVTdWdrwVRc3owra'}, b'M+qyf9Q1WWw3LkkYseEZyEs+U2vxJMKAQZnZCODu4mM=') because could not authenticate, verkey for 9VgkwQpKYrtsifJ3EN8toy cannot be found
 ```
-### Node2
+
 ```sh
 2020-07-28 06:07:19,423|INFO|message_processor.py|Node2 discarding message ({'signature': '3nArUW4sNQHJZwZvCEi9jLhXAFKHyDmcPGMuce7uJhshmfNL6McsyAXVm1hX782AEFAPkjXwQVTdWdrwVRc3owra', 'operation': {'role': '101', 'dest': 'VVKag1sBnv7B7aYVEUZbEp', 'verkey': 'GXa725cSiPBCz3E9utm47TKNyQJu8VV4TA4CthQiCTeY', 'type': '1'}, 'reqId': 1595916439387017332, 'identifier': '9VgkwQpKYrtsifJ3EN8toy', 'protocolVersion': 2}, b'M+qyf9Q1WWw3LkkYseEZyEs+U2vxJMKAQZnZCODu4mM=') because could not authenticate, verkey for 9VgkwQpKYrtsifJ3EN8toy cannot be found
 ```
-### Node3
+
 ```sh
 2020-07-28 06:07:19,425|INFO|message_processor.py|Node3 discarding message ({'identifier': '9VgkwQpKYrtsifJ3EN8toy', 'operation': {'role': '101', 'type': '1', 'dest': 'VVKag1sBnv7B7aYVEUZbEp', 'verkey': 'GXa725cSiPBCz3E9utm47TKNyQJu8VV4TA4CthQiCTeY'}, 'reqId': 1595916439387017332, 'signature': '3nArUW4sNQHJZwZvCEi9jLhXAFKHyDmcPGMuce7uJhshmfNL6McsyAXVm1hX782AEFAPkjXwQVTdWdrwVRc3owra', 'protocolVersion': 2}, b'M+qyf9Q1WWw3LkkYseEZyEs+U2vxJMKAQZnZCODu4mM=') because could not authenticate, verkey for 9VgkwQpKYrtsifJ3EN8toy cannot be found
 ```
-### Node4
+
 ```sh
 2020-07-28 06:07:19,442|INFO|message_processor.py|Node4 discarding message ({'identifier': '9VgkwQpKYrtsifJ3EN8toy', 'protocolVersion': 2, 'reqId': 1595916439387017332, 'signature': '3nArUW4sNQHJZwZvCEi9jLhXAFKHyDmcPGMuce7uJhshmfNL6McsyAXVm1hX782AEFAPkjXwQVTdWdrwVRc3owra', 'operation': {'dest': 'VVKag1sBnv7B7aYVEUZbEp', 'type': '1', 'role': '101', 'verkey': 'GXa725cSiPBCz3E9utm47TKNyQJu8VV4TA4CthQiCTeY'}}, b'M+qyf9Q1WWw3LkkYseEZyEs+U2vxJMKAQZnZCODu4mM=') because could not authenticate, verkey for 9VgkwQpKYrtsifJ3EN8toy cannot be found
 ```
