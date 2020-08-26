@@ -1,19 +1,19 @@
-# hyperledger-indy-node
+# indy-node-dev
 
 ## exec command
 
 ```sh
 # Docker Image Build
-docker build --tag hyperledger-indy-node:0.1 .
+docker build --tag indy-node .
 
 # Docker Container Run
-docker run -p 9701-9708:9701-9708 --name indy-node -d hyperledger-indy-node:0.1
+docker run -p 9701-9708:9701-9708 --name indy-node-dev -d indy-node
 
 # Docker Container Execute Bash
-docker exec -it indy-node /bin/bash
+docker exec -it indy-node-dev /bin/bash
 
 # Docker Container Restart
-docker restart indy-node
+docker restart indy-node-dev
 
 ## Node Log
 tail -f /var/log/indy/sandbox/Node1.log
